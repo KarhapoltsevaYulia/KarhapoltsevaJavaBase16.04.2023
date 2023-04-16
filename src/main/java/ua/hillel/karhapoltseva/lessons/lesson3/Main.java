@@ -8,5 +8,6 @@ public class Main {
         System.out.println("Lesson 3");
         System.out.println("Lesson 3");
         System.out.println("Lesson 3");
+        System.out.println("Lesson 3");
     }
 }
