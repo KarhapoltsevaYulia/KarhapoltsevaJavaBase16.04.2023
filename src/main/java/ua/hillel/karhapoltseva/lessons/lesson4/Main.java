@@ -6,7 +6,9 @@ public class Main {
         int b = 6;
         int c = 10;
         int volume = a*b*c;
-        System.out.println(" Об'ем паралеліпіпеда = "+ volume);
+        int length = 4*(a+b+c);
+        System.out.println(" Об'єм прямокутного паралелепіпеда = "+ volume);
+        System.out.println(" Довжина всіх сторін прямокутного паралелепіпеда = "+ length);
 
     }
 
