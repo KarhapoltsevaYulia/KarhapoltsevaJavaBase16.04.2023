@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int userСhance =3;
+        int userСhance =3, min=0,max=10;
         int  userVolue =0;
         String userNotVolue;
         System.out.println("Вітаю!!!  Ви граєте у гру, вгадай, яке число загадав комп'ютр!!!");
@@ -13,8 +13,8 @@ public class Main {
         int userRandom= (int)(Math.random()*11);
 
         for (int i = 0; i < userСhance; i++) {
-                System.out.println(userRandom);
-            System.out.print("Введіть число від 0 до 10, яке загадав компьтер. Спроба " + (i + 1) + ": ");
+
+            System.out.print("Введіть число від "+min+" до " + max+" , яке загадав компьтер. Спроба " + (i + 1) + ": ");
 
                if (sc.hasNextInt()) {
                 userVolue = sc.nextInt();
@@ -30,8 +30,8 @@ public class Main {
                        }
 
                    }
-                while (userVolue < 0 || userVolue > 10) {
-                    System.out.print("Ви ввели значення, яке не входить у діапазон від 0 до 10!!! Ще раз..  ");
+                while (userVolue < min || userVolue > max) {
+                    System.out.print("Ви ввели значення, яке не входить у діапазон від "+min+" до "+max+" !!! Ще раз..  ");
                     while (sc.hasNextLine()) {
                         if (sc.hasNextInt()) {
                             userVolue = sc.nextInt();
