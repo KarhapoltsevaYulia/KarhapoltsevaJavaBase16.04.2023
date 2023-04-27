@@ -2,17 +2,20 @@ package ua.hillel.karhapoltseva.lessons.lesson6;
 
 public class Main2 {
     public static void main(String[] args) {
-      // int pol = Math.E(pol);
-        int o = 1;
-        for (int i = 0; i < 100; i++) {
-            int kol = o % 1;
-            System.out.println(kol);
-            if ((kol!=4) && (o!=9)) {
-                System.out.println(o+" ");
-            }o++;
-          //  while (o%1 )
-            }
+        int shuttles = 1, numberShuttles = 100,value = 10, unluckyNumber1 = 4,unluckyNumber2 = 9;
 
+       for (int i = 1; i <= numberShuttles; ) {
+            int calculation = shuttles % value;
+            int calculation2 = (shuttles/value)%value;
+            int calculation3  = ((shuttles/value)/value)%value;
+
+            if ((calculation!=unluckyNumber1) && (calculation!=unluckyNumber2)&&(calculation2!=unluckyNumber1)
+                    &&(calculation2!=unluckyNumber2)&&(calculation3!=unluckyNumber1)&&(calculation3!=unluckyNumber2)) {
+               System.out.println(i+" й шатл з № "+shuttles+" ");
+               i ++;
+            }
+            shuttles++;
+            }
         }
     }
 
