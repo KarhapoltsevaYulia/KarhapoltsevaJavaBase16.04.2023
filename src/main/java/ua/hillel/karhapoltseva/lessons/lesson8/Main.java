@@ -8,30 +8,48 @@ public class Main {
         int[] arrayComputer = new int[7];
         int[] arrayUser     = new int[7];
         Scanner sc = new Scanner(System.in);
-        int min=0;
-        for (int i = 0; i < arrayComputer.length; i++) {
-            arrayComputer[i] = (int)(Math.random() * 10);
+        int min=10;
+        int coincidences =0;
 
-        }
-        for (int i = 0; i < arrayUser.length; i++) {
-                System.out.print("Enter value " + i + ": ");
-                if (sc.hasNextInt()){
-                    arrayUser[i] = sc.nextInt();
+         for (int i = 0; i < arrayComputer.length; i++) {
+             arrayComputer[i] = (int) (Math.random() * min);
+           }
+          for (int i = 0; i < arrayUser.length; i++) {
+             arrayUser[i] = (int) (Math.random() * min);
+          }
+         System.out.println("Невідсортовані масиви !");
+         System.out.println(Arrays.toString(arrayComputer));
+         System.out.println(Arrays.toString(arrayUser));
+         System.out.println();
 
-                    continue;
-                } else {
-                    while (sc.hasNextLine()) {
-                        System.out.println("Ne value!");
-                        arrayUser[i] = sc.nextInt();
-                        break;
-                    }
-                }
-        }
+         for (int i = 1; i < arrayComputer.length; i++) {
+             int k=i-1;
+             int temp = arrayComputer[i];
+             while (k>=0 && temp<arrayComputer[k] ) {
+                 temp = arrayComputer[k + 1];
+                 arrayComputer[k + 1] = arrayComputer[k];
+                 arrayComputer[k] = temp;
+                 k--;
+             }
+         }
+             Arrays.sort(arrayUser);
+
+         for (int i = 0; i < arrayComputer.length; i++) {
+             if (arrayComputer[i]==arrayUser[i]){
+                  coincidences++;
+                 System.out.println("Збіг на "+i+" позиції");
+             }
+
+         }
+         System.out.println("Кількість збігів :"+coincidences);
+        System.out.println("Відсортовані масиви !");
         System.out.println(Arrays.toString(arrayComputer));
         System.out.println(Arrays.toString(arrayUser));
-     }
+    }
 
 }
+
+
 /*Зробити два масиви з 7 цифр, заповнених випадковими цифрами (від 0 до 9).
 Перший масив - це числа, які загадані фірмою-організатором лотереї.
 Другий масив - це числа, які вгадав гравець.
