@@ -9,9 +9,6 @@ public class Main {
         int userValueM = 0;
         int userValueN = 0;
 
-
-
-
          while  (true) {
             System.out.print("Ведіть значення М:  ");
             if (sc.hasNextInt()) {
@@ -23,7 +20,6 @@ public class Main {
                     System.out.println("Wrong data!!!");
                     sc.nextLine();
                 }
-
             } else {
                 System.out.println("Wrong data!!!");
                 sc.nextLine();
@@ -46,42 +42,23 @@ public class Main {
                 }
             }
         int[][] arrayMN = new int[userValueM][userValueN];
-        int[][] arrayNM=  new int [userValueN][userValueM];
-              // new int [userValueN][userValueM];
-        //Arrays.copyOf(arrayMN,arrayMN.length);
+        int[][] arrayNM = new int [userValueN][userValueM];
 
         for (int i = 0; i < arrayMN.length; i++) {
             System.out.println();
             for (int j = 0; j < arrayMN[i].length; j++) {
                 arrayMN[i][j]= (int)( Math.random()*10);
+                arrayNM[j][i]=arrayMN[i][j];
                 System.out.print(arrayMN[i][j]+"\t");
-
             }
         }
-
         System.out.println();
-        for (int i = 0,k=0; k< arrayMN.length && i < arrayNM.length; k++,i++) {
-            for (int j = i+1, l=0; l<arrayMN[k].length && j < arrayNM[i].length; l++, j++) {
-              //   arrayNM[i][j]=arrayMN[l][j];
-
-              int temp = arrayNM[i][j];
-                arrayNM[i][j]=arrayNM[j][i];
-             arrayNM[j][i]= temp;
-
-            }
-
-        }
         for (int i = 0; i < arrayNM.length; i++) {
             System.out.println();
             for (int j = 0; j < arrayNM[i].length; j++) {
-                System.out.print(arrayMN[i][j]+"\t");
+                System.out.print(arrayNM[i][j]+"\t");
             }
-
         }
-
-
-
-
     }
 }
 /*  00   01   02  03  04
