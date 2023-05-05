@@ -6,8 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc =new Scanner(System.in);
-        int userValueM = 0;
-        int userValueN = 0;
+        int userValueM = 0,userValueN = 0, valueMatrix =10;
 
          while  (true) {
             System.out.print("Ведіть значення М:  ");
@@ -47,7 +46,7 @@ public class Main {
         for (int i = 0; i < arrayMN.length; i++) {
             System.out.println();
             for (int j = 0; j < arrayMN[i].length; j++) {
-                arrayMN[i][j]= (int)( Math.random()*10);
+                arrayMN[i][j]= (int)( Math.random()*valueMatrix);
                 arrayNM[j][i]=arrayMN[i][j];
                 System.out.print(arrayMN[i][j]+"\t");
             }
