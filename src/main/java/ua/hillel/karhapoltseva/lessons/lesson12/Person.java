@@ -14,10 +14,11 @@ public class Person {
     private int upperPressure;
     private int lowerPressure;
     public int numberOfStepsPerDay;
-    private int age;
+    private final int age;
+
 
     public void setPressure(String pressure) {
-        this.pressure = getUpperPressure()+"/"+getLowerPressure();
+        this.pressure = pressure;
     }
 
     public int getUpperPressure() {
@@ -27,28 +28,18 @@ public class Person {
     public void setUpperPressure(int upperPressure) {
         this.upperPressure = upperPressure;
     }
-
     public int getLowerPressure() {
         return lowerPressure;
     }
     public void setLowerPressure(int lowerPressure) {
         this.lowerPressure = lowerPressure;
     }
-
-    public int getNumberOfStepsPerDay() {
-        return numberOfStepsPerDay;
-    }
     public void setNumberOfStepsPerDay(int numberOfStepsPerDay) {
         this.numberOfStepsPerDay = numberOfStepsPerDay;
     }
-    public int getWeight() {
-        return weight;
-    }
+
     public void setWeight(int weight) {
         this.weight = weight;
-    }
-    public String getSurname() {
-        return surname;
     }
     public void setSurname(String surname) {
         this.surname = surname;

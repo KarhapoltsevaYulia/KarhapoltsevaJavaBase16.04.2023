@@ -7,18 +7,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int user;
-      /*  String[] parameters = {
-                "Name",
-                "Year",
-                "Month Birthday",
-                "Day Birthday",
-                "Email",
-                "Telephone",
-                "Surname",
-                "You weight",
-                "You pressure",
-                "Number of steps per day"
-        };*/
         System.out.println("Введіть кількість користувачів, для фітнес трекеру:");
         user = inputValidation(sc);
         sc.nextLine();
@@ -43,12 +31,12 @@ public class Main {
              System.out.print("Введіть  вес ");
              int weight = inputValidation(sc);
              sc.nextLine();
-             System.out.print("Введіть  тиск ");
+             System.out.print("Введіть  тиск, верхне значення ");
              int upperPressure=inputValidation(sc);
              sc.nextLine();
+             System.out.print("Введіть  тиск, нижне значення ");
              int lowerPressure=inputValidation(sc);
              sc.nextLine();
-            // String pressure = upperPressure+"/"+lowerPressure;
              System.out.print("Введіть кількість пройдений кроків за 1 день ");
              int numberOfStepsPerDay=inputValidation(sc);
              sc.nextLine();
@@ -61,51 +49,82 @@ public class Main {
                      weight, upperPressure,lowerPressure, numberOfStepsPerDay);
              System.out.println();
          }
-        printUser(person);
-        System.out.println();
-        System.out.println("Введіть порядковий номер користувача, якого ви хочете змінити ");
-        System.out.println("Користувачів  "+ (person.length));
 
-        for (int i = 0; i < person.length; i++) {
-            System.out.println((i+1)+") "+ person[i].getName());
-        }
-         int temp  = inputValidationUser(sc,person.length);
+        do {
+            System.out.println();
+            printUser(person);
+            System.out.println();
+            System.out.println("Введіть порядковий номер користувача, якого ви хочете змінити ");
+            System.out.println("Користувачів  "+ (person.length));
 
-        if (temp<=person.length){
-            person[temp-1].printAccountInfo();
-            System.out.println("Введіть номер параметра, який хочете змінити: ");
-            System.out.println("1.Прізвище ");
-            System.out.println("2.Вага ");
-            System.out.println("3.Тиск");
-            System.out.println("4. Кількість пройдених за день кроків ");
-            int temp2 = inputValidationParametr(sc);
-            switch (temp2){
-                case 1: {
-                    System.out.print("Введіть нове прізвище ");
-                    person[temp-1].setSurname(examination(sc));
-                    break;
+            for (int i = 0; i < person.length; i++) {
+                System.out.println((i+1)+") "+ person[i].getName());
+            }
+
+            int temp  = inputValidationUser(sc,person.length);
+
+            if (temp <= person.length) {
+                System.out.println();
+                person[temp - 1].printAccountInfo();
+                System.out.println("Введіть номер параметра, який хочете змінити: ");
+                System.out.println("1.Прізвище ");
+                System.out.println("2.Вага ");
+                System.out.println("3.Тиск");
+                System.out.println("4. Кількість пройдених за день кроків ");
+                int temp2 = inputValidationParameter(sc);
+                sc.nextLine();
+                System.out.println();
+                switch (temp2) {
+                    case 1: {
+                        System.out.print("Введіть нове прізвище ");
+                        person[temp - 1].setSurname(examination(sc));
+                        break;
+                    }
+                    case 2: {
+                        System.out.print("Введіть нову вагу ");
+                        person[temp - 1].setWeight(inputValidation(sc));
+                        break;
+                    }
+                    case 3: {
+                        System.out.print("Введіть новий тиск. Верхнє : ");
+                        person[temp - 1].setUpperPressure(inputValidation(sc));
+                        System.out.print("Нижнє: ");
+                        person[temp - 1].setLowerPressure(inputValidation(sc));
+                        person[temp-1].setPressure(person[temp-1].getUpperPressure()+" /"+person[temp-1].getLowerPressure());
+                        break;
+                    }
+                    case 4: {
+                        System.out.print("Введіть нове значення кількості кроків ");
+                        person[temp - 1].setNumberOfStepsPerDay(inputValidation(sc));
+                        sc.nextLine();
+                        break;
+                    }
                 }
-                case 2:{
-                    System.out.print("Введіть нову вагу ");
-                    person[temp-1].setWeight(inputValidation(sc));
-                    break;
-                }
-                case 3: {
-                    System.out.print("Введіть новий тиск. Верхнє : ");
-                    person[temp-1].setUpperPressure(inputValidation(sc));
-                    System.out.print("Нижнє: ");
-                    person[temp-1].setLowerPressure(inputValidation(sc));
-                 //   person[temp-1].setPressure(person[temp-1].getUpperPressure());
-                    System.out.println("!"+person[temp-1].getUpperPressure()+"!"+person[temp-1].getLowerPressure());
-                    break;
-                }
-                case 4:{
-                    System.out.print("Введіть нове значення кількості кроків ");
-                    person[temp-1].setNumberOfStepsPerDay(inputValidation(sc));
-                    break;
+                printUser(person);
+            }
+            System.out.println("Press  Enter");
+           sc.nextLine();
+            System.out.println("Хочете продовжити зміни у користувача?(Y/N)");
+        } while (examinationYesNo(sc));
+    }
+    static boolean examinationYesNo (Scanner scanner) {
+        while(true) {
+            boolean yesNo;
+            if (scanner.hasNextLine()) {
+                String temp2 = scanner.nextLine();
+                if (temp2.length() == 0 ||  temp2.contains(" ")||temp2.contains("\n")) {
+                    System.out.print(red+"Ви нічого не ввели "+black);
+                } else {
+                    if (temp2.contains("Y") || temp2.contains("N")||temp2.contains("y")||temp2.contains("n")){
+                        if (temp2.contains("Y")||temp2.contains("y")) {
+                            yesNo =true;
+                            } else {
+                            yesNo = false;
+                             }
+                        return yesNo;
+                    } else System.out.println("Натисність (Y/N) або (y/n) ");
                 }
             }
-            printUser(person);
         }
     }
 
@@ -115,7 +134,7 @@ public class Main {
             person[i].printAccountInfo();
         }
     }
-    static int inputValidationParametr(Scanner scanner) {
+    static int inputValidationParameter(Scanner scanner) {
         while (true) {
             if (scanner.hasNextInt()) {
                 int temp = scanner.nextInt();
@@ -210,11 +229,11 @@ public class Main {
             scanner.nextLine();
         }
     }
-    static int inputValidationUser(Scanner scanner,int lenght) {
+    static int inputValidationUser(Scanner scanner,int length) {
         while (true) {
             if (scanner.hasNextInt()) {
                 int temp = scanner.nextInt();
-                if ((temp > 0)&&(temp<=lenght)) {
+                if ((temp > 0)&&(temp<=length)) {
                     return temp;
 
                 } else {
