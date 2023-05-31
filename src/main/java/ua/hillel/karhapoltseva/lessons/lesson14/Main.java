@@ -90,12 +90,13 @@ public class Main {
         iphones.sms();
     }
 
-    private static void objectAndroids() {
+    private static Object objectAndroids() {
         Androids androids = new Androids();
         androids.call();
         androids.sms();
         androids.internet();
         androids.systemLinuxOs();
+        return androids;
     }
 }
 /*Зробіть інтерфейс Smartphones, який має містити методи call(), sms(), internet()
