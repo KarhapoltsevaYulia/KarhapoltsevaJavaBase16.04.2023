@@ -9,25 +9,22 @@ public class TestArrayUtil {
     static int[][] arrayMatrix=null;
     @BeforeAll
     static void beforeAll() {
-        array = new int[]{
+       array = new int[]{};
 
-        };// 1,2,3,4,5
+//        };// 1,2,3,4,5
         arrayMatrix=new int[][]{
                 {},
                 {1, 2, 3, 4, 5}
         };
-
-
     }
-
 
     @Test
     void testmethod1(){
-        Assertions.assertEquals(-1,ArrayUtil.methodArrayInt(new int[]{}));
+        Assertions.assertEquals(-1,ArrayUtil.methodArrayInt(array));
     }
     @Test
     void testmethod2(){
-        Assertions.assertFalse(ArrayUtil.methodArrayInt(array)== -2);
+        Assertions.assertFalse(ArrayUtil.methodArrayInt(array)==-2);
     }
     @Test
     void testmethod3(){

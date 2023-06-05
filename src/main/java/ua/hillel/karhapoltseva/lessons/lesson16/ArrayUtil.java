@@ -9,6 +9,7 @@ public class ArrayUtil {
     // if matrix [][] return -5 //  не квадратнa
 
     static double  methodArrayInt(int[] array){
+
         double average=0;
         if (array.length == 0){
             return -1;
